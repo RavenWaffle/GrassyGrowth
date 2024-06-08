@@ -40,31 +40,24 @@ using UnityEngine.Events;
 
         [Tooltip("Colour for the specific status to be displayed in the slider"), SerializeField]
         private Color healthColor;
-        [HideInInspector] public Transform player;
-        protected Transform UI;
+        
 
         public Events events;
 
-        //private CowsinsAI cai;
-        //private Animator animator;
-        //private NavMeshAgent agent;
+        public Entity entity;
 
 
         // Start is called before the first frame update"
         public virtual void Start()
         {
+
+            entity = this.gameObject.GetComponent<Entity>();
             // Status initial settings
+            maxHealth = entity.Health;
             health = maxHealth;
 
             // Spawn
             events.OnSpawn.Invoke();
-
-            // Initial settings 
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-            //cai = GetComponent<CowsinsAI>();
-            //animator = GetComponent<Animator>();
-            //agent = GetComponent<NavMeshAgent>();
-
 
             // UI 
             // Determine max values
@@ -74,24 +67,12 @@ using UnityEngine.Events;
                 Destroy(healthSlider);
             }
 
-            
-            // Rigidbody Search
-            /*if (cai.useRagdoll)
-            {
-                animator = gameObject.GetComponent<Animator>();
-                agent = gameObject.GetComponent<NavMeshAgent>();
-                Rigidbody[] rigidBodies = gameObject.GetComponentsInChildren<Rigidbody>();
-
-                foreach (Rigidbody rigidBody in rigidBodies)
-                { 
-                    rigidBody.isKinematic = true;
-                }
-            }*/
         }
 
         // Update is called once per frame
         public virtual void Update()
         {
+            health = entity.Health;
             //Handle UI 
             if (healthSlider != null) healthSlider.value = Mathf.Lerp(healthSlider.value, health, Time.deltaTime * 6);
 

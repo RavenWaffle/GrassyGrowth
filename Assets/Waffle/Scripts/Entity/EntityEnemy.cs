@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,11 @@ namespace Enemy
         public float Speed => _speed;
         [SerializeField] float _range;
         public float Range => _range;
+
+        private void Start()
+        {
+            _commander = GameObject.FindGameObjectWithTag("Commander").GetComponent<EnemyCommander>();
+        }
 
 
         void Update()

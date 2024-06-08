@@ -101,4 +101,5 @@ MonoBehaviour:
   enemies:
   - {fileID: 1605031170224830824, guid: 8887a6d105dce344fb74293f1b7337f0, type: 3}
   - {fileID: 208122360710193976, guid: a16d1a428e18fe14eafb2d5f2870dc55, type: 3}
-  timeBetweenSpawns: 3
+  timeBetweenSpawns: 2
+  currentTile: 0

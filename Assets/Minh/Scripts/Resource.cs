@@ -6,20 +6,25 @@ using UnityEngine;
 public class Resource : MonoBehaviour
 {
     [SerializeField] private bool waterResource;
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player"))
         {
-            if (waterResource)
+            if (other.gameObject.CompareTag("Player"))
             {
-                other.gameObject.GetComponent<PlayerResource>().currentWaterResource++;
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                other.gameObject.GetComponent<PlayerResource>().currentSeedResource++;
-                Destroy(this.gameObject);
+                if (waterResource)
+                {
+                    other.gameObject.GetComponent<PlayerResource>().currentWaterResource++;
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    other.gameObject.GetComponent<PlayerResource>().currentSeedResource++;
+                    Destroy(this.gameObject);
+                }
             }
         }
     }
+
+    
 }
