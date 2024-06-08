@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    [SerializeField] protected float Health;
-    public float health => Health;
+    [SerializeField] protected float health;
+    public float Health => health;
 
     public void SetHealth(float target)
     {
-        Health = target;
+        health = target;
     }
 
     protected virtual void Die()
     {
-        if(health <= 0)
+        if(Health <= 0)
         {
             Destroy(this.gameObject);
         }

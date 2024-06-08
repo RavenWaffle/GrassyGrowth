@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d47744645a4124f9fa7a500dec0e3f, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  damage: 34
-  windUpTime: 66.66
-  coolDownTime: 33.33
+  damage: 10
+  windUpTime: 0.66
+  coolDownTime: 0.33

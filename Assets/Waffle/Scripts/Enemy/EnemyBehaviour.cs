@@ -7,6 +7,7 @@ namespace Enemy
     public class EnemyBehaviour : MonoBehaviour
     {
         EntityEnemy Base;
+        [SerializeField] Animator animator;
         [SerializeField] Weapon.WeaponObject weapon;
         [SerializeField] Transform target;
         [SerializeField] float _playerDetectionRange;
@@ -23,10 +24,11 @@ namespace Enemy
             {
                 Move(target.position);
             }
-            else
+            else if(weapon.canAttack)
             {
                 Attack();
             }
+            animationControl();
         }
 
         public void Move(Vector3 destination)
@@ -60,6 +62,18 @@ namespace Enemy
                 {
                     weapon.StartCoroutine(weapon.Attack(targetEntity));
                 }
+            }
+        }
+
+        void animationControl()
+        {
+            if(weapon.attacking)
+            {
+                animator.SetBool("attacking", true);
+            }
+            else
+            {
+                animator.SetBool("attacking", false);
             }
         }
     }
