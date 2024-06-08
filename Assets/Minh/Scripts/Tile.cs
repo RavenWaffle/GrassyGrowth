@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [Tooltip("ID: 0=Desert, 1=Grass")]
+    [Tooltip("ID: 0=Desert, 1=Grass, 2=FertilizedLand")]
     public int tileState = 0;
 
     public bool occupied = false;
