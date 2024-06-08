@@ -24,6 +24,12 @@ namespace Enemy
 
         private void FixedUpdate()
         {
+            TargetManager();
+            BehaviourHandler();
+
+            if (target == null)
+                return;
+
             if(Vector3.Distance(this.transform.position, target.position) > Base.Range)
             {
                 Move(target.position);
@@ -32,7 +38,6 @@ namespace Enemy
             {
                 Attack();
             }
-            BehaviourHandler();
         }
 
         public void Move(Vector3 destination)
@@ -49,6 +54,7 @@ namespace Enemy
         {
             if(Vector3.Distance(this.transform.position, target.position) <= Base.Range)
             {
+                transform.LookAt(target.position);
                 Base.Agent.velocity = Vector3.zero;
                 if (target.TryGetComponent<Entity>(out Entity targetEntity))
                 {
@@ -57,16 +63,18 @@ namespace Enemy
             }
         }
 
-        void GetTarget()
+        void TargetManager()
         {
             if(target == null)
             {
-                Base.Commander.GiveOrder(ref target);
+                animator.SetBool("attacking", false);
+                Base.Commander.GiveOrder(ref target, this.transform.position);
             }
         }
 
         void BehaviourHandler()
         {
+
             if(weapon.attacking)
             {
                 Base.Agent.angularSpeed = 0;
