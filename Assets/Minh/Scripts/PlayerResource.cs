@@ -6,16 +6,21 @@ using UnityEngine;
 
 public class PlayerResource : MonoBehaviour
 {
+    [SerializeField] private PlayerController pc;
+    
     public int currentWaterResource, currentSeedResource, requiredWaterResource, requiredSeedResource;
 
     public bool usingWater;
 
     public bool spraying = false;
 
+    private bool canSpray = true;
+
     [SerializeField] private float animationLength = 0.5f;
     private void Update()
     {
         StartCoroutine(TileCheck());
+        handler();
     }
 
     private void WaterResourceManagement()
@@ -33,10 +38,24 @@ public class PlayerResource : MonoBehaviour
         }
     }
 
+    void handler()
+    {
+        if (spraying)
+        {
+            pc.canMove = false;
+            pc.DeadStop();
+        }
+        else
+        {
+            pc.canMove = true;
+        }
+    }
+    
     IEnumerator TileCheck()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.Space) && canSpray)
         {
+            canSpray = false;
             spraying = true;
             RaycastHit hit;
             if (Physics.Raycast(transform.position, -transform.up, out hit))
@@ -56,13 +75,13 @@ public class PlayerResource : MonoBehaviour
                     {
                         SeedResourceManagement();
                         hit.collider.gameObject.GetComponent<Tile>().tileState++;
+
                     }
-                }
-
-            }
+                } 
+            } 
+            yield return new WaitForSeconds(animationLength);
+            spraying = false;
+            canSpray = true;
         }
-
-        yield return new WaitForSeconds(animationLength);
-        spraying = false;
     }
 }

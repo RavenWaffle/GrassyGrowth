@@ -12,14 +12,13 @@ namespace Player
             public float rotationSpeed = 720f; // Degrees per second
             float horizontalInput;
             float verticalInput;
-            public bool spraying = false;
+            public bool canMove = true;
             
             private Rigidbody rb;
     
             void Start()
             {
                 rb = GetComponent<Rigidbody>();
-                spraying = this.GetComponent<PlayerResource>().spraying;
             }
     
             void Update()
@@ -27,11 +26,10 @@ namespace Player
                 // Get input for movement and rotation
                 horizontalInput = Input.GetAxis("Horizontal");
                 verticalInput = Input.GetAxis("Vertical");
-                spraying = this.GetComponent<PlayerResource>().spraying;
             }
             void FixedUpdate()
             {
-                if(spraying == true)
+                if(!canMove)
                     return;
                 // Calculate desired movement direction
                 Vector3 movement = new Vector3(horizontalInput, 0, verticalInput).normalized;
@@ -51,8 +49,11 @@ namespace Player
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
                 }
             }
-            
-            
+
+            public void DeadStop()
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            }
             
         }
 }
