@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [Tooltip("ID: 0=Desert, 1=Grass, 2=Tower")]
+    [Tooltip("ID: 0=Desert, 1=Grass")]
     public int tileState = 0;
+
+    public bool occupied = false;
+
+    public bool added = false;
 
     [SerializeField] private Material desert;
     [SerializeField] private Material grass;
-    [SerializeField] private Material tower;
     
     private TilesManager tilesManager;
 
-    private void Start()
+    private void Awake()
     {
         tilesManager = GameObject.FindGameObjectWithTag("TileManager").GetComponent<TilesManager>();
         tilesManager.tileList.Add(this.gameObject);
@@ -32,10 +35,6 @@ public class Tile : MonoBehaviour
         else if (tileState == 1)
         {
             this.GetComponent<MeshRenderer>().material = grass;
-        }
-        else if (tileState == 2)
-        {
-            this.GetComponent<MeshRenderer>().material = tower;
         }
     }
 }

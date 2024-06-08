@@ -17,11 +17,47 @@ public class PlayerResource : MonoBehaviour
     private bool canSpray = true;
 
     [SerializeField] private float animationLength = 0.5f;
+
+    [SerializeField] private GameObject towerHolder, tower;
+
+    [SerializeField] private LayerMask ground;
+
+    [SerializeField] private GameObject towerPrefab;
     private void Update()
     {
-        StartCoroutine(TileCheck());
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (usingWater)
+                usingWater = false;
+            else
+            {
+                usingWater = true;
+                towerHolder.SetActive(false);
+            }
+        }
         handler();
+        if(usingWater)
+            StartCoroutine(TileCheck());
+        else
+        {
+            TowerPlacement();
+        }
     }
+
+    /*
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (usingWater)
+                usingWater = false;
+            else
+            {
+                usingWater = true;
+                towerHolder.SetActive(false);
+            }
+        }
+    }*/
 
     private void WaterResourceManagement()
     {
@@ -53,7 +89,7 @@ public class PlayerResource : MonoBehaviour
     
     IEnumerator TileCheck()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canSpray)
+        if (Input.GetKeyDown(KeyCode.J) && canSpray)
         {
             canSpray = false;
             spraying = true;
@@ -70,18 +106,42 @@ public class PlayerResource : MonoBehaviour
                         hit.collider.gameObject.GetComponent<Tile>().tileState++;
                     }
 
-                    else if (!usingWater && hit.collider.gameObject.GetComponent<Tile>().tileState > 0 &&
+                    /*else if (!usingWater && hit.collider.gameObject.GetComponent<Tile>().tileState > 0 &&
                              currentSeedResource >= requiredSeedResource)
                     {
                         SeedResourceManagement();
                         hit.collider.gameObject.GetComponent<Tile>().tileState++;
 
-                    }
+                    }*/
                 } 
             } 
             yield return new WaitForSeconds(animationLength);
             spraying = false;
             canSpray = true;
         }
+    }
+
+    void TowerPlacement()
+    {
+        towerHolder.SetActive(true);
+        RaycastHit hit;
+        if (Physics.Raycast(towerHolder.transform.position, -transform.up, out hit, ground))
+        {
+            tower.transform.position = hit.collider.gameObject.transform.position;
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                if (hit.collider.gameObject.GetComponent<Tile>().occupied == false && currentSeedResource >= requiredSeedResource &&hit.collider.gameObject.GetComponent<Tile>().tileState == 1)
+                {
+                    var newTower = Instantiate(towerPrefab, tower.transform);
+                    newTower.transform.parent = hit.collider.gameObject.transform;
+                    SeedResourceManagement();
+                }
+            }
+        }
+
+        
+        
+
+
     }
 }
