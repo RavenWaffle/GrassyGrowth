@@ -45,19 +45,6 @@ namespace Enemy
             target = Target;
         }
 
-        public bool GetPlayer()
-        {
-            Collider[] col = Physics.OverlapSphere(this.transform.position, _playerDetectionRange);
-            foreach(Collider c in col)
-            {
-                if(c.CompareTag("Player"))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         void Attack()
         {
             if(Vector3.Distance(this.transform.position, target.position) <= Base.Range)
