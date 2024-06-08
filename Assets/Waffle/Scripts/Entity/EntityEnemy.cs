@@ -28,5 +28,15 @@ namespace Enemy
         {
             Die();
         }
+
+        protected override void Die()
+        {
+            if(Health <= 0)
+            {
+                TilesManager tilesManager = GameObject.FindGameObjectWithTag("TileManager").GetComponent<TilesManager>();
+                tilesManager.enemiesToKill--;
+                Destroy(this.gameObject);
+            }
+        }
     }
 }

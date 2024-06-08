@@ -14,13 +14,15 @@ public class TilesManager : MonoBehaviour
     
     public GameObject spawnPoint;
     [SerializeField] public int maxEnemiesPerWave;
-    [SerializeField] private int enemiesToKill;
+    [SerializeField] public int enemiesToKill;
     [SerializeField] private int currentWave;
     [SerializeField] private float timeTillNextWave;
 
     private int rand;
     private float timeLeft;
     private bool updatedList = false;
+
+    private bool countdownWave = false;
 
     private void Start()
     {
@@ -33,24 +35,31 @@ public class TilesManager : MonoBehaviour
         {
             TileUpdate();
         }
-        Wave();
+        if(!countdownWave)
+            StartCoroutine(Wave());
+        if (enemiesToKill <= 0)
+        {
+            countdownWave = true;
+        }
+
+        //Debug.Log(enemiesToKill);
     }
 
-    private void Wave()
+    private IEnumerator Wave()
     {
         if (enemiesToKill <= 0)
         {
-            timeLeft -= Time.deltaTime;
-            if ( timeLeft < 0)
-            {
+            countdownWave = true;
+            yield return new WaitForSeconds(timeTillNextWave);
                 currentWave++;
+                countdownWave = false;
                 for (int i = 0; i < currentWave; i++)
                 {
                     SpawnerSpawn();
                 }
 
                 enemiesToKill = maxEnemiesPerWave * currentWave;
-            }
+                timeLeft = timeTillNextWave;
             
         }
     }
