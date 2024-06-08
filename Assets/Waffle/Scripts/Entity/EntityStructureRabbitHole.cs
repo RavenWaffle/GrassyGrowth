@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace Structure
 {
-    public class EntityStructureMotherTree : Entity
+    public class EntityStructureRabbitHole : Entity
     {
 
     }

@@ -10,5 +10,9 @@ namespace Structure
         [SerializeField] private float _range;
         public float Range => _range;
 
+        void Update()
+        {
+            Die();
+        }
     }
 }

@@ -7,6 +7,9 @@ namespace Player
 {
     public class EntityPlayer : Entity
     {
-
+        void Update()
+        {
+            Die();
+        }
     }
 }

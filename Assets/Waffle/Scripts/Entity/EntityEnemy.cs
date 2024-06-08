@@ -13,5 +13,11 @@ namespace Enemy
         public float Speed => _speed;
         [SerializeField] float _range;
         public float Range => _range;
+
+
+        void Update()
+        {
+            Die();
+        }
     }
 }

@@ -67,7 +67,12 @@ namespace Structure
                 Debug.Log(target.name);
                 Vector3 safeguard = target.transform.position;
                 safeguard.Scale(new Vector3(0, -1, -1));
-                CharacterParent.transform.LookAt(safeguard);
+
+                CharacterParent.transform.LookAt(target.transform.position);
+            }
+            else
+            {
+                CharacterParent.transform.rotation = Quaternion.Euler(Vector3.zero);
             }
         }
     }
