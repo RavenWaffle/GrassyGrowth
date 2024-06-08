@@ -9,7 +9,7 @@ namespace Enemy
         EntityEnemy Base;
         [SerializeField] Animator animator;
         [SerializeField] Weapon.WeaponObject weapon;
-        [SerializeField] Transform target;
+        public Transform target;
         [SerializeField] float _playerDetectionRange;
 
 
