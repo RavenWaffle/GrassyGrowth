@@ -32,7 +32,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rig1|AxeIdle
+  m_Name: Rig1|CrossbowIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8012651465819590079, guid: 83aef01bb4be407479d8cde827229f2a,
+  m_Motion: {fileID: 6975219267299301482, guid: 83aef01bb4be407479d8cde827229f2a,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -118,7 +118,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rig1|AxeAttack
+  m_Name: Rig1|CrossbowAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -131,7 +131,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5919569066997465193, guid: 83aef01bb4be407479d8cde827229f2a,
+  m_Motion: {fileID: -1041533376706816759, guid: 83aef01bb4be407479d8cde827229f2a,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -144,7 +144,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RatAxe
+  m_Name: RatCrossbow
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: attacking
@@ -152,13 +152,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: moving
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -207,7 +207,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rig1|RunningAxe
+  m_Name: Rig1|RunningCrossbow
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -220,7 +220,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 3374763693521639920, guid: 83aef01bb4be407479d8cde827229f2a,
+  m_Motion: {fileID: 2305705362860455497, guid: 83aef01bb4be407479d8cde827229f2a,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
