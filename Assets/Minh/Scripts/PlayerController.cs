@@ -65,6 +65,18 @@ namespace Player
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
             }
+
+            public bool GetMoving()
+            {
+                if(movement == Vector3.zero)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
             
         }
 }

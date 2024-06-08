@@ -12,6 +12,12 @@ ModelImporter:
   - first:
       74: 3071005791587679231
     second: Rig1|Standing
+  - first:
+      74: -844840216506900177
+    second: Rig1|Running
+  - first:
+      74: 2544741281913140341
+    second: Rig1|UsePack
   externalObjects: {}
   materials:
     materialImportMode: 2

@@ -57,6 +57,14 @@ namespace Enemy
             }
         }
 
+        void GetTarget()
+        {
+            if(target == null)
+            {
+                Base.Commander.GiveOrder(ref target);
+            }
+        }
+
         void BehaviourHandler()
         {
             if(weapon.attacking)

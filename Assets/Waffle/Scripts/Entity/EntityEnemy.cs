@@ -7,6 +7,9 @@ namespace Enemy
 {
     public class EntityEnemy : Entity
     {
+        [SerializeField] EnemyCommander _commander;
+        public EnemyCommander Commander => _commander;
+
         [SerializeField] NavMeshAgent _agent;
         public NavMeshAgent Agent => _agent;
         [SerializeField] float _speed;

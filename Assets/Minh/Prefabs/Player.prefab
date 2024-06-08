@@ -192,9 +192,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6653973291105232503}
   - component: {fileID: 6653973291105232502}
+  - component: {fileID: 6653973291105232499}
   - component: {fileID: 6653973291105232497}
   - component: {fileID: 6653973291105232496}
-  - component: {fileID: 6653973291105232499}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -217,7 +217,7 @@ Transform:
   - {fileID: 6653973290461520889}
   - {fileID: 6653973292239706277}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6653973291105232502
 MonoBehaviour:
@@ -234,6 +234,33 @@ MonoBehaviour:
   speed: 5
   rotationSpeed: 720
   canMove: 1
+--- !u!114 &6653973291105232499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6653973291105232500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfed2938327f80d4bb8493232dc6a2ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pc: {fileID: 6653973291105232502}
+  currentWaterResource: 3
+  currentSeedResource: 3
+  requiredWaterResource: 1
+  requiredSeedResource: 1
+  usingWater: 1
+  spraying: 0
+  animationLength: 0.7
+  towerHolder: {fileID: 6653973292239706282}
+  tower: {fileID: 6582769887136644425}
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
+  towerPrefab: {fileID: 871559696707579133, guid: 91d11e5eae043364fb95f376509dc608,
+    type: 3}
 --- !u!54 &6653973291105232497
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -264,33 +291,6 @@ CapsuleCollider:
   m_Height: 2.0084927
   m_Direction: 1
   m_Center: {x: 0, y: -0.00073826313, z: 0}
---- !u!114 &6653973291105232499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6653973291105232500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfed2938327f80d4bb8493232dc6a2ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pc: {fileID: 6653973291105232502}
-  currentWaterResource: 3
-  currentSeedResource: 3
-  requiredWaterResource: 1
-  requiredSeedResource: 1
-  usingWater: 1
-  spraying: 0
-  animationLength: 0.7
-  towerHolder: {fileID: 6653973292239706282}
-  tower: {fileID: 6582769887136644425}
-  ground:
-    serializedVersion: 2
-    m_Bits: 64
-  towerPrefab: {fileID: 871559696707579133, guid: 91d11e5eae043364fb95f376509dc608,
-    type: 3}
 --- !u!1 &6653973292239706282
 GameObject:
   m_ObjectHideFlags: 0
