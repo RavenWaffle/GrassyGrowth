@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour
 
     public bool occupied = false;
 
-    public bool added = false;
+    //public bool added = false;
 
     [SerializeField] private Material desert;
     [SerializeField] private Material grass;

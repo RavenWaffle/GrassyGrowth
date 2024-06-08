@@ -135,6 +135,7 @@ public class PlayerResource : MonoBehaviour
                     var newTower = Instantiate(towerPrefab, tower.transform);
                     newTower.transform.parent = hit.collider.gameObject.transform;
                     SeedResourceManagement();
+                    hit.collider.gameObject.GetComponent<Tile>().occupied = true;
                 }
             }
         }

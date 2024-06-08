@@ -1,35 +1,84 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TilesManager : MonoBehaviour
 {
 
-    public List<GameObject> tileList;
-    public List<GameObject> desertTiles;
-    public List<GameObject> grassTiles;
+    public List<GameObject> tileList = new List<GameObject>();
+    public List<GameObject> desertTiles = new List<GameObject>();
+    public List<GameObject> grassTiles = new List<GameObject>();
+    
+    public GameObject spawnPoint;
+    [SerializeField] public int maxEnemiesPerWave;
+    [SerializeField] private int enemiesToKill;
+    [SerializeField] private int currentWave;
+    [SerializeField] private float timeTillNextWave;
+
+    private int rand;
+    private float timeLeft;
+    private bool updatedList = false;
 
     private void Start()
     {
-        TileUpdate();
+        timeLeft = timeTillNextWave;
+    }
+
+    private void Update()
+    {
+        if (!updatedList)
+        {
+            TileUpdate();
+        }
+        Wave();
+    }
+
+    private void Wave()
+    {
+        if (enemiesToKill <= 0)
+        {
+            timeLeft -= Time.deltaTime;
+            if ( timeLeft < 0)
+            {
+                currentWave++;
+                for (int i = 0; i < currentWave; i++)
+                {
+                    SpawnerSpawn();
+                }
+
+                enemiesToKill = maxEnemiesPerWave * currentWave;
+            }
+            
+        }
     }
 
     public void TileUpdate()
     {
         foreach (var tile in tileList)
         {
-            if (tile.GetComponent<Tile>().tileState == 0 && !tile.GetComponent<Tile>().added)
+            if (tile.GetComponent<Tile>().tileState == 0)
             {
-                tile.GetComponent<Tile>().added = true;
-                desertTiles.Add(this.gameObject);
+                desertTiles.Add(tile);
             }
-            else if (tile.GetComponent<Tile>().tileState == 1 && !tile.GetComponent<Tile>().added)
+            else if (tile.GetComponent<Tile>().tileState == 1)
             {
-                tile.GetComponent<Tile>().added = true;
-                grassTiles.Add(this.gameObject);
+                grassTiles.Add(tile);
             }
         }
+
+        updatedList = true;
+    }
+    
+    private void SpawnerSpawn()
+    {
+        rand = Random.Range(0, desertTiles.Count);
+        //Instantiate(enemies[Random.Range(0, enemies.Length)], desertTiles[Random.Range(0, desertTiles.Count)].transform.position, transform.rotation);
+        Instantiate(spawnPoint,desertTiles[rand].transform);
+        desertTiles[rand].GetComponent<Tile>().occupied = true;
+        spawnPoint.GetComponent<EnemySpawner>().currentTile = rand;
     }
     
 }
