@@ -48,7 +48,7 @@ Material:
     - _maxBright: 1
     - _minBright: 0.3
     m_Colors:
-    - _Colour: {r: 0.41972235, g: 0.6792453, b: 0.46712762, a: 0}
+    - _Colour: {r: 0.7159795, g: 0.8490566, b: 0.53266287, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6722204577900742975
 MonoBehaviour:
