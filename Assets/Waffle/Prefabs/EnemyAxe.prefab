@@ -55,7 +55,7 @@ MonoBehaviour:
   _commander: {fileID: 0}
   _agent: {fileID: 1605031170224830827}
   _speed: 6
-  _range: 0.5
+  _range: 2.25
 --- !u!114 &1605031170224830823
 MonoBehaviour:
   m_ObjectHideFlags: 0

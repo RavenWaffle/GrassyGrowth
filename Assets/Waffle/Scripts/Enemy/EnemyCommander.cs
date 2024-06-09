@@ -13,6 +13,15 @@ namespace Enemy
 
         public void GiveOrder(ref Transform Target, Vector3 soldierTransform)
         {
+            List<Entity> _entities = FindObjectsOfType<Entity>().ToList();
+            _entities.RemoveAll(e => e.TryGetComponent<Enemy.EntityEnemy>(out EntityEnemy none));
+            _entities = _entities.OrderBy(e => Vector2.Distance(e.transform.position, soldierTransform)).ToList();
+            if (_entities.Count > 0)
+            {
+                Target = _entities[0].gameObject.transform;
+            }
+
+            /*
             List<Structure.EntityStructureSentry> _sentry = FindObjectsOfType<Structure.EntityStructureSentry>().ToList();
             List<Structure.EntityStructureRabbitHole> _rabbitHole = FindObjectsOfType<Structure.EntityStructureRabbitHole>().ToList();
             List<Structure.EntityStructureWell> _well = FindObjectsOfType<Structure.EntityStructureWell>().ToList();
@@ -23,7 +32,7 @@ namespace Enemy
             {
                 Target = hitlist1[0].gameObject.transform;
             }
-
+            */
         }
     }
 }
