@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Minh/Scenes/MainMenu.unity
+    path: Assets/MainMenu.unity
     guid: c2ec253c4dc936f4eaef78b64e2a554e
   - enabled: 1
-    path: Assets/Minh/Scenes/Test.unity
-    guid: b04cbc1e5c931ff48a493993237e9f3b
+    path: Assets/TestGameplayWaffle.unity
+    guid: 0a47a2dda90661542be02f6463ee15ba
   m_configObjects: {}
