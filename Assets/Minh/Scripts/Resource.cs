@@ -7,7 +7,7 @@ public class Resource : MonoBehaviour
 {
     [SerializeField] private bool waterResource;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         {
             if (other.gameObject.CompareTag("Player"))

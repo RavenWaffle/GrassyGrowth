@@ -69,7 +69,11 @@ public class ResourceGen : MonoBehaviour
 
     private IEnumerator SpawnResource()
     {
-        Instantiate(resource[GetRandomSpawn()], new Vector3( this.transform.position.x + Random.Range(-2f, 2f), 2, this.transform.position.z + Random.Range(-2f, 2f)), resource[GetRandomSpawn()].transform.rotation);
+        Vector3 randomVector = new Vector3(1, 0f, 1);
+        int x = Random.Range(-2, 2);
+        int z = Random.Range(-2, 2);
+        randomVector.Scale(new Vector3(Mathf.Cos(x * Mathf.PI), 0, Mathf.Cos(z * Mathf.PI)));
+        Instantiate(resource[GetRandomSpawn()], this.transform.position + (randomVector.normalized * 2f) + new Vector3(0, 1f, 0)  , resource[GetRandomSpawn()].transform.rotation);
         counting = true;
         yield return new WaitForSeconds(timeBetweenSpawns);
         counting = false;
