@@ -29,6 +29,7 @@ namespace Player
     
             void Update()
             {
+
                 // Get input for movement and rotation
                 horizontalInputMov = Input.GetAxisRaw("Horizontal");
                 verticalInputMov = Input.GetAxisRaw("Vertical");
@@ -68,6 +69,11 @@ namespace Player
 
             public bool GetMoving()
             {
+                if(!canMove)
+            {
+                return false;
+            }
+
                 if(movement == Vector3.zero)
                 {
                     return false;

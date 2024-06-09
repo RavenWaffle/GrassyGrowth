@@ -92,7 +92,6 @@ public class PlayerResource : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J) && canSpray)
         {
             canSpray = false;
-            spraying = true;
             RaycastHit hit;
             if (Physics.Raycast(transform.position, -transform.up, out hit))
             {
@@ -102,6 +101,7 @@ public class PlayerResource : MonoBehaviour
                     if (usingWater && hit.collider.gameObject.GetComponent<Tile>().tileState == 0 &&
                         currentWaterResource >= requiredWaterResource)
                     {
+                        spraying = true;
                         WaterResourceManagement();
                         hit.collider.gameObject.GetComponent<Tile>().tileState++;
                         TilesManager tilesManager = GameObject.FindGameObjectWithTag("TileManager").GetComponent<TilesManager>();
