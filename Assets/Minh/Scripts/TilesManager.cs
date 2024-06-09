@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
 public class TilesManager : MonoBehaviour
 {
 
@@ -15,14 +14,14 @@ public class TilesManager : MonoBehaviour
     public GameObject spawnPoint;
     [SerializeField] public int maxEnemiesPerWave;
     [SerializeField] public int enemiesToKill;
-    [SerializeField] private int currentWave;
+    [SerializeField] public int currentWave;
     [SerializeField] private float timeTillNextWave;
 
     private int rand;
-    private float timeLeft;
+    public float timeLeft;
     private bool updatedList = false;
 
-    private bool countdownWave = false;
+    public bool countdownWave = false;
 
     private void Start()
     {
@@ -41,6 +40,8 @@ public class TilesManager : MonoBehaviour
         {
             countdownWave = true;
         }
+
+        
 
         //Debug.Log(enemiesToKill);
     }

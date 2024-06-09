@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public int currentTile;
     private int i;
     
+    
     private Queue<IEnumerator> coroutineQueue = new Queue<IEnumerator> ();
     private void Start()
     {

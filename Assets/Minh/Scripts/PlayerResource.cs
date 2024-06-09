@@ -104,6 +104,9 @@ public class PlayerResource : MonoBehaviour
                     {
                         WaterResourceManagement();
                         hit.collider.gameObject.GetComponent<Tile>().tileState++;
+                        TilesManager tilesManager = GameObject.FindGameObjectWithTag("TileManager").GetComponent<TilesManager>();
+                        tilesManager.grassTiles.Add(hit.collider.gameObject);
+                        tilesManager.desertTiles.Remove(hit.collider.gameObject);
                     }
 
                     /*else if (!usingWater && hit.collider.gameObject.GetComponent<Tile>().tileState > 0 &&
