@@ -17,6 +17,7 @@ namespace Player
             if(Health <= 0)
             {
                 this.gameObject.SetActive(false);
+                this.enabled = false;
             }
         }
     }

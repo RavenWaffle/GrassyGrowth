@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Enemy
@@ -9,7 +10,7 @@ namespace Enemy
         EntityEnemy Base;
         [SerializeField] Animator animator;
         [SerializeField] Weapon.WeaponObject weapon;
-        public Transform target;
+        public Entity target;
         [SerializeField] float _playerDetectionRange;
 
 
@@ -30,9 +31,9 @@ namespace Enemy
             if (target == null)
                 return;
 
-            if(Vector3.Distance(this.transform.position, target.position) > Base.Range)
+            if(Vector3.Distance(this.transform.position, target.gameObject.transform.position) > Base.Range)
             {
-                Move(target.position);
+                Move(target.gameObject.transform.position);
             }
             else if(weapon.canAttack)
             {
@@ -45,16 +46,16 @@ namespace Enemy
             Base.Agent.destination = destination;
         }
 
-        public void SetTarget(Transform Target)
+        public void SetTarget(Entity Target)
         {
             target = Target;
         }
 
         void Attack()
         {
-            if(Vector3.Distance(this.transform.position, target.position) <= Base.Range)
+            if(Vector3.Distance(this.transform.position, target.gameObject.transform.position) <= Base.Range)
             {
-                transform.LookAt(target.position);
+                transform.LookAt(target.gameObject.transform.position);
                 Base.Agent.velocity = Vector3.zero;
                 if (target.TryGetComponent<Entity>(out Entity targetEntity))
                 {
@@ -65,11 +66,20 @@ namespace Enemy
 
         void TargetManager()
         {
+            if (target != null)
+            {
+                if (!target.enabled)
+                {
+                    target = null;
+                }
+            }
+            
             if(target == null)
             {
                 animator.SetBool("attacking", false);
                 Base.Commander.GiveOrder(ref target, this.transform.position);
             }
+            
         }
 
         void BehaviourHandler()

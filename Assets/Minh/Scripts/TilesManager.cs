@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 public class TilesManager : MonoBehaviour
 {
 
@@ -23,6 +24,9 @@ public class TilesManager : MonoBehaviour
 
     public bool countdownWave = false;
 
+    public GameObject winScreen;
+    public GameObject canvas;
+
     private void Start()
     {
         timeLeft = timeTillNextWave;
@@ -41,7 +45,12 @@ public class TilesManager : MonoBehaviour
             countdownWave = true;
         }
 
-        
+        if (grassTiles.Count == tileList.Count)
+        {
+            canvas.SetActive(false);
+            winScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
 
         //Debug.Log(enemiesToKill);
     }

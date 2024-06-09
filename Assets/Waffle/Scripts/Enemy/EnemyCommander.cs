@@ -11,14 +11,16 @@ namespace Enemy
         {
         }
 
-        public void GiveOrder(ref Transform Target, Vector3 soldierTransform)
+        public void GiveOrder(ref Entity Target, Vector3 soldierTransform)
         {
             List<Entity> _entities = FindObjectsOfType<Entity>().ToList();
             _entities.RemoveAll(e => e.TryGetComponent<Enemy.EntityEnemy>(out EntityEnemy none));
+            _entities.RemoveAll(e => !e.enabled);
             _entities = _entities.OrderBy(e => Vector2.Distance(e.transform.position, soldierTransform)).ToList();
             if (_entities.Count > 0)
             {
-                Target = _entities[0].gameObject.transform;
+                Target = _entities[0];
+                Debug.Log(_entities[0].gameObject.name);
             }
 
             /*

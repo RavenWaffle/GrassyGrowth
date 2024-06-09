@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float timeBetweenSpawns;
     public int currentTile;
     private int i;
+    [SerializeField] private GameObject wood;
     
     
     private Queue<IEnumerator> coroutineQueue = new Queue<IEnumerator> ();
@@ -47,6 +48,10 @@ public class EnemySpawner : MonoBehaviour
         if (i == tilesManager.maxEnemiesPerWave)
         {
             tilesManager.desertTiles[currentTile].GetComponent<Tile>().occupied = false;
+            for (int i = tilesManager.currentWave - 1; i >= 0; i--)
+            {
+                Instantiate(wood, this.transform.position, this.transform.rotation);
+            }
             Destroy(this.gameObject);
         }
     }
