@@ -11,5 +11,13 @@ namespace Player
         {
             Die();
         }
+
+        protected override void Die()
+        {
+            if(Health <= 0)
+            {
+                this.gameObject.SetActive(false);
+            }
+        }
     }
 }
