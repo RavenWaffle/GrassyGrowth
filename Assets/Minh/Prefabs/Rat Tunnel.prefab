@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9103343873303657107}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 94788ac80ddc47046b2a85a79de87165, type: 2}
-  - {fileID: 2100000, guid: f098c35b0437d3445b5b5d27f95c8db0, type: 2}
+  - {fileID: 2100000, guid: fe1115c5150fc7047b6f6c748627b52c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,4 +102,4 @@ MonoBehaviour:
   - {fileID: 1605031170224830824, guid: 8887a6d105dce344fb74293f1b7337f0, type: 3}
   - {fileID: 208122360710193976, guid: a16d1a428e18fe14eafb2d5f2870dc55, type: 3}
   timeBetweenSpawns: 2
-  currentTile: 0
+  currentTile: 57

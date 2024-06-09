@@ -7,14 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrassMedium
-  m_Shader: {fileID: -6465566751694194690, guid: 545aeb4251428424ea95f17800f5549b,
+  m_Name: HoleMouth
+  m_Shader: {fileID: -6465566751694194690, guid: f3a42465e68cbd046b47d410c4b41c36,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -24,10 +24,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Alpha:
-        m_Texture: {fileID: 2800000, guid: 8f170bbabcd81c643957caff96d420ae, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Texture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -50,11 +46,11 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _maxBright: 1
-    - _minBright: 0.3
+    - _minBright: 0
     m_Colors:
-    - _Colour: {r: 0.49381617, g: 0.6698113, b: 0.22432362, a: 0}
+    - _Colour: {r: 0.31132078, g: 0.19731347, b: 0.13950695, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &6722204577900742975
+--- !u!114 &7564728303782158902
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

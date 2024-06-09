@@ -12,8 +12,8 @@ public class Tile : MonoBehaviour
 
     //public bool added = false;
 
-    [SerializeField] private Material desert;
-    [SerializeField] private Material grass;
+    [SerializeField] private GameObject desert;
+    [SerializeField] private GameObject grass;
     
     private TilesManager tilesManager;
 
@@ -31,10 +31,14 @@ public class Tile : MonoBehaviour
     private void TileChange()
     {
         if (tileState == 0)
-            this.GetComponent<MeshRenderer>().material = desert;
+        {
+            grass.SetActive(false);
+            desert.SetActive(true);
+        }
         else if (tileState == 1)
         {
-            this.GetComponent<MeshRenderer>().material = grass;
+            desert.SetActive(false);
+            grass.SetActive(true);
         }
     }
 }

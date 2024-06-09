@@ -54,7 +54,7 @@ MonoBehaviour:
   health: 100
   _commander: {fileID: 0}
   _agent: {fileID: 208122360710193978}
-  _speed: 4
+  _speed: 2
   _range: 6
 --- !u!114 &208122360710193980
 MonoBehaviour:

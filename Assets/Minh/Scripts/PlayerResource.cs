@@ -131,12 +131,12 @@ public class PlayerResource : MonoBehaviour
         if (Physics.Raycast(towerHolder.transform.position, -transform.up, out hit, ground))
         {
             tower.transform.position = hit.collider.gameObject.transform.position;
+            tower.transform.rotation = hit.collider.gameObject.transform.rotation;
             if (Input.GetKeyDown(KeyCode.J))
             {
                 if (hit.collider.gameObject.GetComponent<Tile>().occupied == false && currentSeedResource >= requiredSeedResource &&hit.collider.gameObject.GetComponent<Tile>().tileState == 1)
                 {
-                    var newTower = Instantiate(towerPrefab, tower.transform);
-                    newTower.transform.parent = hit.collider.gameObject.transform;
+                    Instantiate(towerPrefab, tower.transform.position, Quaternion.Euler(Vector3.zero));
                     SeedResourceManagement();
                     hit.collider.gameObject.GetComponent<Tile>().occupied = true;
                 }
